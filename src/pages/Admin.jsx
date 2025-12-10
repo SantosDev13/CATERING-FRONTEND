@@ -1,65 +1,108 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { PlusCircle, Trash2, Image as ImageIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Importante para redirigir
+import { PlusCircle, Trash2, Image as ImageIcon, LogOut } from 'lucide-react';
 
 const Admin = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   
-  // Estado para el formulario nuevo
+  // 1. Recuperar el token de seguridad
+  const token = localStorage.getItem('auth_token');
+
+  // Estado para el formulario
   const [formData, setFormData] = useState({
     name: '',
-    category: 'MOBILIARIO', // Valor por defecto
+    category: 'MOBILIARIO',
     description: '',
-    imageUrl: ''
+    imageUrl: '',
+    price: '' // Agregamos precio por si lo usas en el futuro
   });
 
-  // Cargar productos al iniciar (para ver la lista abajo)
+  // 2. Verificar seguridad al cargar la página
   useEffect(() => {
+    if (!token) {
+      navigate('/login'); // Si no hay llave, te manda a la puerta (Login)
+      return;
+    }
     loadProducts();
-  }, []);
+  }, [navigate, token]);
 
   const loadProducts = async () => {
-    const response = await axios.get('http://localhost:8080/api/products');
-    setProducts(response.data);
+    try {
+      const response = await axios.get('http://localhost:8080/api/products', {
+        headers: { 'Authorization': `Basic ${token}` } // <--- ENVIAMOS LA LLAVE
+      });
+      setProducts(response.data);
+    } catch (error) {
+      console.error(error);
+      // Si el servidor dice "No autorizado" (401), es que la contraseña cambió o expiró
+      if (error.response && error.response.status === 401) {
+        alert("Tu sesión ha expirado. Por favor ingresa nuevamente.");
+        localStorage.removeItem('auth_token');
+        navigate('/login');
+      }
+    }
   };
 
-  // Manejar inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Enviar nuevo producto
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/products', formData);
+      await axios.post('http://localhost:8080/api/products', formData, {
+        headers: { 'Authorization': `Basic ${token}` } // <--- LLAVE EN EL POST
+      });
       alert('Producto creado con éxito');
-      setFormData({ name: '', category: 'MOBILIARIO', description: '', imageUrl: '' }); // Limpiar form
+      // Limpiar formulario
+      setFormData({ name: '', category: 'MOBILIARIO', description: '', imageUrl: '', price: '' });
       loadProducts(); // Recargar la lista
     } catch (error) {
-      alert('Error al crear producto');
       console.error(error);
+      alert('Error al crear producto. Verifica que tengas sesión activa.');
     }
   };
 
-  // Borrar producto
   const handleDelete = async (id) => {
     if (window.confirm('¿Seguro que quieres eliminar este producto?')) {
-      await axios.delete(`http://localhost:8080/api/products/${id}`);
-      loadProducts();
+      try {
+        await axios.delete(`http://localhost:8080/api/products/${id}`, {
+            headers: { 'Authorization': `Basic ${token}` } // <--- LLAVE EN EL DELETE
+        });
+        loadProducts();
+      } catch (error) {
+        console.error(error);
+        alert("Error al eliminar");
+      }
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth_token');
+    navigate('/login');
   };
 
   return (
     <div className="min-h-screen bg-gray-100 pt-28 pb-12 px-6">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         
-        <h1 className="text-3xl font-serif text-brand-dark mb-8">Panel de Administración</h1>
+        {/* Encabezado con Botón Salir */}
+        <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-serif text-brand-dark">Panel de Administración</h1>
+            <button 
+                onClick={handleLogout}
+                className="flex items-center gap-2 text-red-600 hover:text-red-800 font-bold border border-red-200 bg-white px-4 py-2 rounded shadow-sm hover:shadow-md transition-all"
+            >
+                <LogOut size={18} /> Cerrar Sesión
+            </button>
+        </div>
 
         {/* --- FORMULARIO DE CREACIÓN --- */}
-        <div className="bg-white p-6 rounded-lg shadow-md mb-12 border-t-4 border-brand-gold">
+        <div className="bg-white p-6 rounded-lg shadow-md mb-12 border-t-4 border-[#D4AF37]">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <PlusCircle className="text-brand-gold" /> Nuevo Producto
+            <PlusCircle className="text-[#D4AF37]" /> Nuevo Producto
           </h2>
           
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -69,14 +112,14 @@ const Admin = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Nombre del Producto (Ej. Silla Tiffany)" 
-                className="border p-2 rounded w-full" 
+                className="border p-2 rounded w-full focus:border-[#D4AF37] outline-none" 
                 required
               />
               <select 
                 name="category" 
                 value={formData.category}
                 onChange={handleChange}
-                className="border p-2 rounded w-full bg-white"
+                className="border p-2 rounded w-full bg-white focus:border-[#D4AF37] outline-none"
               >
                 <option value="MOBILIARIO">MOBILIARIO</option>
                 <option value="MENAJE">MENAJE</option>
@@ -90,26 +133,40 @@ const Admin = () => {
               value={formData.description}
               onChange={handleChange}
               placeholder="Descripción breve..." 
-              className="border p-2 rounded w-full"
+              className="border p-2 rounded w-full focus:border-[#D4AF37] outline-none"
               rows="2"
             />
 
-            <div className="flex gap-2">
-              <input 
-                name="imageUrl" 
-                value={formData.imageUrl}
-                onChange={handleChange}
-                placeholder="URL de la imagen (https://...)" 
-                className="border p-2 rounded w-full flex-1"
-                required
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex gap-2">
+                    <input 
+                        name="imageUrl" 
+                        value={formData.imageUrl}
+                        onChange={handleChange}
+                        placeholder="URL de la imagen (https://...)" 
+                        className="border p-2 rounded w-full flex-1 focus:border-[#D4AF37] outline-none"
+                        required
+                    />
+                </div>
+                <input 
+                    name="price" 
+                    type="number"
+                    value={formData.price}
+                    onChange={handleChange}
+                    placeholder="Precio (Opcional)" 
+                    className="border p-2 rounded w-full focus:border-[#D4AF37] outline-none"
+                />
             </div>
-            {/* Previsualización de imagen pequeña si hay URL */}
+            
+            {/* Previsualización */}
             {formData.imageUrl && (
-              <img src={formData.imageUrl} alt="Preview" className="h-20 w-20 object-cover rounded border" />
+              <div className="mt-2">
+                  <p className="text-xs text-gray-400 mb-1">Vista previa:</p>
+                  <img src={formData.imageUrl} alt="Preview" className="h-24 w-24 object-cover rounded border" />
+              </div>
             )}
 
-            <button type="submit" className="bg-brand-dark text-white px-6 py-2 rounded hover:bg-brand-gold transition-colors font-bold w-full md:w-auto">
+            <button type="submit" className="bg-black text-white px-6 py-2 rounded hover:bg-[#D4AF37] transition-colors font-bold w-full md:w-auto tracking-widest uppercase">
               Guardar Producto
             </button>
           </form>
@@ -119,7 +176,7 @@ const Admin = () => {
         <h2 className="text-2xl font-serif mb-4">Inventario Actual</h2>
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <table className="w-full text-left">
-            <thead className="bg-gray-200">
+            <thead className="bg-gray-200 text-gray-600 uppercase text-xs tracking-wider">
               <tr>
                 <th className="p-4">Imagen</th>
                 <th className="p-4">Nombre</th>
@@ -127,24 +184,36 @@ const Admin = () => {
                 <th className="p-4 text-right">Acción</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-gray-100">
               {products.map(product => (
-                <tr key={product.id} className="border-t hover:bg-gray-50">
+                <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                   <td className="p-4">
-                    <img src={product.imageUrl} alt={product.name} className="w-12 h-12 object-cover rounded" />
+                    <img src={product.imageUrl} alt={product.name} className="w-12 h-12 object-cover rounded border border-gray-200" />
                   </td>
-                  <td className="p-4 font-bold text-gray-700">{product.name}</td>
-                  <td className="p-4 text-sm text-gray-500 badge">{product.category}</td>
+                  <td className="p-4 font-bold text-gray-800">{product.name}</td>
+                  <td className="p-4">
+                    <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-bold border border-gray-300">
+                        {product.category}
+                    </span>
+                  </td>
                   <td className="p-4 text-right">
                     <button 
                       onClick={() => handleDelete(product.id)}
-                      className="text-red-500 hover:text-red-700 bg-red-50 p-2 rounded hover:bg-red-100"
+                      className="text-red-500 hover:text-red-700 bg-red-50 p-2 rounded-full hover:bg-red-100 transition-colors"
+                      title="Eliminar producto"
                     >
                       <Trash2 size={18} />
                     </button>
                   </td>
                 </tr>
               ))}
+              {products.length === 0 && (
+                  <tr>
+                      <td colSpan="4" className="p-8 text-center text-gray-400 italic">
+                          No hay productos registrados aún.
+                      </td>
+                  </tr>
+              )}
             </tbody>
           </table>
         </div>

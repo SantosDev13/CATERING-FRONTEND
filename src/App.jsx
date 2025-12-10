@@ -9,6 +9,7 @@ import Footer from './components/layout/Footer';
 import Gallery from './pages/Gallery';
 import Catering from './pages/Catering';
 import Buffets from './pages/Buffets';
+import Login from './pages/Login';
 import { CartProvider } from './context/CartContext'; 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
         <Footer /> {/* <--- AGREGAR AQUÍ */}

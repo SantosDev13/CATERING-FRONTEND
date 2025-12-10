@@ -30,7 +30,14 @@ const Contact = () => {
       ? cartItems.map(item => `- ${item.name} (${item.category})`).join('\n')
       : "Sin productos de alquiler seleccionados (Solo cotización de servicio).";
 
-    // Payload para Spring Boot
+      // 1. PREPARAR LOS ITEMS PARA EL BACKEND (Solo ID y Cantidad)
+    // El Backend espera: [ { "productId": 1, "quantity": 1 }, ... ]
+    const itemsPayload = cartItems.map(item => ({
+      productId: item.id,
+      quantity: 1 // Por defecto 1, si tuvieras selector de cantidad pondrías item.quantity
+    }));
+
+    // 2. Armar el JSON exacto que pide el nuevo QuoteDTO de Java
     const payload = {
       clientName: formData.clientName,
       clientEmail: formData.clientEmail,
@@ -39,17 +46,23 @@ const Contact = () => {
       eventType: formData.eventType,
       guestCount: parseInt(formData.guestCount) || 0,
       location: formData.location,
-      itemsOfInterest: `Comentarios: ${formData.comments}\n\n--- ITEMS SELECCIONADOS ---\n${itemsListString}`
+      comments: formData.comments, // Ahora enviamos los comentarios aparte
+      items: itemsPayload          // <--- AQUÍ ESTÁ LA MAGIA RELACIONAL
     };
 
     try {
+      // 3. Enviar a Spring Boot
       await axios.post('http://localhost:8080/api/quotes', payload);
+      
+      // 4. Éxito
       setStatus('success');
       clearCart();
       window.scrollTo(0, 0);
     } catch (error) {
-      console.error(error);
+      console.error("Error enviando cotización:", error);
       setStatus('error');
+      // Opcional: Mostrar alerta al usuario
+      alert("Hubo un error al enviar la cotización. Revisa la consola.");
     }
   };
 
