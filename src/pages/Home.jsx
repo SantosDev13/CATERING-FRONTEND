@@ -102,7 +102,7 @@ const Home = () => {
               </h2>
               <p className="text-gray-600 font-sans text-lg leading-relaxed mb-6">
                 Fundada con la visión de transformar simples reuniones en memorias eternas, 
-                <span className="font-bold text-black"> TU EMPRESA </span> 
+                <span className="font-bold text-black"> Sabor y Eventos </span> 
                 ha sido referente de hospitalidad en Lima durante más de una década.
               </p>
               <p className="text-gray-600 font-sans text-lg leading-relaxed mb-8">
@@ -153,7 +153,7 @@ const Home = () => {
           </h2>
           <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
           <p className="text-gray-600 leading-relaxed text-lg font-sans">
-            En <span className="font-bold text-brand-dark">TU EMPRESA</span>, entendemos que cada evento cuenta una historia única. 
+            En <span className="font-bold text-brand-dark">Sabor y Eventos</span>, entendemos que cada evento cuenta una historia única. 
             No solo servimos comida o alquilamos sillas; creamos la atmósfera perfecta donde suceden los mejores recuerdos de tu vida.
             Con más de 10 años de experiencia en Lima, somos sinónimo de puntualidad y sofisticación.
           </p>
@@ -193,7 +193,7 @@ const Home = () => {
                 className="group relative h-[400px] overflow-hidden cursor-pointer"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1487452066049-08ea5fe972f7?q=80&w=800&auto=format&fit=crop" 
+                  src="https://www.codama.es/wp-content/uploads/2021/10/cocina-profesional.jpg" 
                   alt="Alquileres" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -215,7 +215,7 @@ const Home = () => {
                 className="group relative h-[400px] overflow-hidden cursor-pointer"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1579700810793-1628d0879008?q=80&w=800&auto=format&fit=crop" 
+                  src="https://thoughtcatalog.com/wp-content/uploads/2014/02/shutterstock_163374878.jpg" 
                   alt="Mozos" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

@@ -38,7 +38,7 @@ const Catering = () => {
       <section className="grid grid-cols-1 lg:grid-cols-2">
         <div className="h-[600px] overflow-hidden relative group">
            <img 
-             src="https://images.unsplash.com/photo-1519225448526-0a0295155809?q=80&w=2000&auto=format&fit=crop" 
+             src="https://decoglobal.es/wp-content/uploads/thumbnails/3-ideas-para-una-boda-sencilla-y-elegante.jpg" 
              alt="Boda" 
              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
            />
@@ -143,7 +143,7 @@ const Catering = () => {
         </div>
         <div className="h-[600px] overflow-hidden relative group order-1 lg:order-2">
            <img 
-             src="https://images.unsplash.com/photo-1530103862676-de3c9a59af57?q=80&w=2000&auto=format&fit=crop" 
+             src="https://emilexproducciones.com/wp-content/uploads/2023/03/Pasos-para-organizar-una-fiesta-de-cumpleanos.jpg" 
              alt="Cumpleaños" 
              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
            />

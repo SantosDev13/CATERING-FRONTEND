@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Columna 1: Marca */}
           <div>
             <h2 className="text-2xl font-serif font-bold text-white mb-6">
-              TU EMPRESA<span className="text-brand-gold">.</span>
+              Sabor y Eventos<span className="text-brand-gold">.</span>
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Expertos en catering y logística para eventos en Lima. 
@@ -35,7 +35,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-gray-300">
               <li className="flex items-center gap-3">
                 <MapPin size={16} className="text-brand-gold" />
-                Av. Larco 123, Miraflores, Lima
+                Huaral , Lima - Perú
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-brand-gold" />
@@ -43,7 +43,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-brand-gold" />
-                eventos@tuempresa.com
+                saboryeventos@gmail.com
               </li>
             </ul>
           </div>
@@ -65,7 +65,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-500 text-xs">
-            &copy; {new Date().getFullYear()} Tu Empresa de Catering. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Sabor y eventos. Todos los derechos reservados.
           </p>
         </div>
       </div>

@@ -12,7 +12,7 @@ const Buffets = () => {
       price: "40",
       description: "La opción ideal para compartir un almuerzo con el auténtico sabor casero.",
       minPax: "Mínimo 25 personas",
-      image: "https://images.unsplash.com/photo-1574484284008-81dcec28d3e9?q=80&w=1000&auto=format&fit=crop", // Foto de Ají de Gallina o similar
+      image: "https://i.pinimg.com/originals/ad/dc/fa/addcfaec3a58a67c788dddcd5003c098.jpg", // Foto de Ají de Gallina o similar
       includes: [
         "1 Entrada (Papa a la Huancaína o Ocopa)",
         "2 Platos de Fondo a elección",
@@ -28,7 +28,7 @@ const Buffets = () => {
       description: "Nuestra opción más solicitada. Variedad y sabor para eventos sociales y corporativos.",
       minPax: "Mínimo 25 personas",
       featured: true, // Para resaltarlo
-      image: "https://images.unsplash.com/photo-1626084013401-447a2753239e?q=80&w=1000&auto=format&fit=crop", // Foto de Lomo Saltado / Seco
+      image: "https://perusabroso.net/wp-content/uploads/secretos-anticucho-peruano-brocheta.webp", // Foto de Lomo Saltado / Seco
       includes: [
         "2 Entradas a elección",
         "3 Platos de Fondo (Ají de Gallina, Seco, Carapulcra)",
