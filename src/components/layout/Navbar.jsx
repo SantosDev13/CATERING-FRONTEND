@@ -82,6 +82,7 @@ const Navbar = () => {
         <div className="fixed inset-0 bg-black/95 flex flex-col items-center justify-center space-y-8 z-40">
            <Link to="/" className="text-white text-2xl font-['Times_New_Roman',serif] tracking-widest" onClick={() => setIsOpen(false)}>INICIO</Link>
            <Link to="/rentals" className="text-white text-2xl font-['Times_New_Roman',serif] tracking-widest" onClick={() => setIsOpen(false)}>ALQUILERES</Link>
+           <Link to="/buffets" className="text-white text-2xl font-['Times_New_Roman',serif] tracking-widest" onClick={() => setIsOpen(false)}>BUFFETS</Link>
            <Link to="/staff" className="text-white text-2xl font-['Times_New_Roman',serif] tracking-widest" onClick={() => setIsOpen(false)}>PERSONAL</Link>
            <Link to="/contact" className="text-[#D4AF37] text-2xl font-['Times_New_Roman',serif] tracking-widest border-b border-[#D4AF37]" onClick={() => setIsOpen(false)}>COTIZAR</Link>
         </div>

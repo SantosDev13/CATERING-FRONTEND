@@ -193,7 +193,7 @@ const Admin = () => {
                   <td className="p-4 font-bold text-gray-800">{product.name}</td>
                   <td className="p-4">
                     <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-bold border border-gray-300">
-                        {product.category}
+                        {product.category ? product.category.name : 'Sin Categoría'}
                     </span>
                   </td>
                   <td className="p-4 text-right">

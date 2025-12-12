@@ -82,7 +82,7 @@ const Rentals = () => {
               {/* Info del Producto */}
               <div className="p-6">
                 <span className="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2 block">
-                  {product.category}
+                  {product.category ? product.category.name : 'General'}
                 </span>
                 <h3 className="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand-gold transition-colors">
                   {product.name}
