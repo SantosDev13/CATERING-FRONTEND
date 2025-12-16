@@ -4,12 +4,12 @@ import { X, PlayCircle, ZoomIn } from 'lucide-react';
 
 // IMAGENES DE EJEMPLO (Reemplázalas luego con las tuyas)
 const galleryImages = [
-  { id: 1, src: "https://images.unsplash.com/photo-1519225448526-0a0295155809?q=80&w=800&auto=format&fit=crop", category: "BODAS" },
-  { id: 2, src: "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=800&auto=format&fit=crop", category: "CATERING" },
-  { id: 3, src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc6?q=80&w=800&auto=format&fit=crop", category: "CORPORATIVO" },
-  { id: 4, src: "https://images.unsplash.com/photo-1530103862676-de3c9a59af57?q=80&w=800&auto=format&fit=crop", category: "AMBIENTACIÓN" },
-  { id: 5, src: "https://images.unsplash.com/photo-1520342868574-5fa3804e551c?q=80&w=800&auto=format&fit=crop", category: "DETALLES" },
-  { id: 6, src: "https://images.unsplash.com/photo-1505935428862-770b6f24f629?q=80&w=800&auto=format&fit=crop", category: "CENA" },
+  { id: 1, src: "https://gregdotel.com/wp-content/uploads/2021/06/Boda-Masiel-y-Bryant__490__GDP7312_boda-bodas-metro-country-club-recepcion-san-pedro-de-macoris_Greg-Dotel_1.jpg", category: "BODAS" },
+  { id: 2, src: "https://arregla.co/wp-content/uploads/2024/03/catering-5.jpg", category: "CATERING" },
+  { id: 3, src: "https://image.wedmegood.com/resized-nw/1300X/wp-content/uploads/2018/03/SIA_3476.jpg", category: "CORPORATIVO" },
+  { id: 4, src: "https://veoagency.com/wp-content/uploads/2022/11/VEO-AGENCY-TENDENCIAS-PARA-FIESTAS-DE-FIN-DE-ANO-CORPORATIVAS.jpg", category: "AMBIENTACIÓN" },
+  { id: 5, src: "https://heraldodemexico.com.mx/u/fotografias/m/2022/11/9/f1280x720-613640_745315_5050.jpg", category: "DETALLES" },
+  { id: 6, src: "https://www.norarealfood.com/img/ybc_blog/post/cena.jpg", category: "CENA" },
 ];
 
 const Gallery = () => {

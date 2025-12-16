@@ -199,11 +199,11 @@ const Contact = () => {
               </div>
               <div className="flex items-center gap-4 text-gray-600">
                 <Mail size={18} className="text-[#D4AF37]" />
-                <span className="text-sm tracking-widest">contacto@tuempresa.com</span>
+                <span className="text-sm tracking-widest">saboryeventos31@gmail.com</span>
               </div>
               <div className="flex items-center gap-4 text-gray-600">
                 <MapPin size={18} className="text-[#D4AF37]" />
-                <span className="text-sm tracking-widest">Miraflores, Lima</span>
+                <span className="text-sm tracking-widest">Huaral, Lima</span>
               </div>
             </div>
           </div>

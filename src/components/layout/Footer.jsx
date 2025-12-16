@@ -52,7 +52,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-6 text-brand-gold uppercase tracking-wider">Síguenos</h3>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-all">
+              <a href="https://www.facebook.com/profile.php?id=61583268156843" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-all">
                 <Facebook size={20} />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-all">
