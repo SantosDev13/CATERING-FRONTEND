@@ -103,7 +103,7 @@ const Home = () => {
               <p className="text-gray-600 font-sans text-lg leading-relaxed mb-6">
                 Fundada con la visión de transformar simples reuniones en memorias eternas, 
                 <span className="font-bold text-black"> Sabor y Eventos </span> 
-                ha sido referente de hospitalidad en Lima durante más de una década.
+                ha sido referente de hospitalidad en Huaral durante más de una década.
               </p>
               <p className="text-gray-600 font-sans text-lg leading-relaxed mb-8">
                 No somos solo un proveedor de catering; somos arquitectos de momentos. 
@@ -130,7 +130,7 @@ const Home = () => {
               {/* Firma (Opcional, da toque personal) */}
               <div className="mt-8">
                 <p className="font-['Times_New_Roman',serif] text-2xl italic text-gray-400">
-                  Familia Fundadora
+                  Carhuachin & Familia
                 </p>
               </div>
 
@@ -154,8 +154,8 @@ const Home = () => {
           <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
           <p className="text-gray-600 leading-relaxed text-lg font-sans">
             En <span className="font-bold text-brand-dark">Sabor y Eventos</span>, entendemos que cada evento cuenta una historia única. 
-            No solo servimos comida o alquilamos sillas; creamos la atmósfera perfecta donde suceden los mejores recuerdos de tu vida.
-            Con más de 10 años de experiencia en Lima, somos sinónimo de puntualidad y sofisticación.
+            No solo servimos comida o alquilamos mobiliario; creamos la atmósfera perfecta donde suceden los mejores recuerdos de tu vida.
+            Con más de 10 años de experiencia en Huaral, somos sinónimo de puntualidad y sofisticación.
           </p>
         </motion.div>
       </section>
@@ -193,7 +193,7 @@ const Home = () => {
                 className="group relative h-[400px] overflow-hidden cursor-pointer"
               >
                 <img 
-                  src="https://www.codama.es/wp-content/uploads/2021/10/cocina-profesional.jpg" 
+                  src="https://i.pinimg.com/originals/5c/d0/fa/5cd0faf0bf69dc5e03359b5ece96097a.jpg" 
                   alt="Alquileres" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
