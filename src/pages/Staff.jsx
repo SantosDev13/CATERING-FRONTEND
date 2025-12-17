@@ -33,7 +33,7 @@ const Staff = () => {
           {/* Bloque 1: Mozos */}
           <div className="h-[500px] overflow-hidden relative group">
              <img 
-               src="https://buffetscriollojuly.com/wp-content/uploads/2024/02/servicio-de-mozos-en-lima.jpg" 
+               src="https://media.timeout.com/images/105188502/1920/1440/image.jpg" 
                alt="Mozos" 
                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
              />
